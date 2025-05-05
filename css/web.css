@@ -6,16 +6,18 @@
 
 :root[data-active-color-scheme="light"] {
     color-scheme: light;
-    --color-background: #FFF;
-    --color-text: #1F1F1F;
-    --color-bottom-dialog-background: #F2F2F2;
+    --color-background: #fff;
+    --color-text: #1f1f1f;
+    --color-bottom-dialog-background: #f2f2f2;
+    --quick-link-color: #0d0d0d;
 }
 
 :root[data-active-color-scheme="dark"] {
     color-scheme: dark;
-    --color-background: #1F1F1F;
-    --color-text: #E8F2F7;
+    --color-background: #1f1f1f;
+    --color-text: #e8f2f7;
     --color-bottom-dialog-background: #242424;
+    --quick-link-color: #efefef;
 }
 
 html {
@@ -142,7 +144,7 @@ form {
 
 input.top-search {
     margin: 0;
-    padding: 0 6px;
+    padding: 0 6px 0 25px;
     flex-basis: 0;
     flex-grow: 1;
     height: 1.4rem;
@@ -151,26 +153,12 @@ input.top-search {
     border-radius: 26px;
     letter-spacing: inherit;
     background-color: rgba(0, 0, 0, 0.4);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='1em' fill='none' viewBox='0 0 24 24'%3E%3Cg stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16M21 21l-4.35-4.35'/%3E%3C/g%3E%3C/svg%3E");
+    background-position: center left 5px;
+    background-repeat: no-repeat;
     border: 1px solid #FFF;
     color: #FFF;
     font-size: 1rem;
-
-}
-
-input.top-search::before {
-    width: 30px;
-    height: 30px;
-    background-color: red;
-}
-
-[class*=FM-Search-Form] label[for=search-bar] {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cg stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16M21 21l-4.35-4.35'/%3E%3C/g%3E%3C/svg%3E");
-    display: block;
-    height: 24px;
-    left: 0;
-    position: absolute;
-    top: 16px;
-    width: 24px
 }
 
 input.top-search:focus {
@@ -206,6 +194,27 @@ input.top-search::placeholder {
     display: inline-flex;
     padding: 4px 16px;
     background-color: rgba(255, 255, 255, 0.1)
+}
+
+ul.quick-links {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    overflow: auto;
+    padding: 0.5rem 0;
+    list-style: none;
+    border-bottom: 0.0625rem solid #d9d9d9;
+    white-space: nowrap;
+    scrollbar-width: thin;
+}
+
+ul.quick-links li {
+    line-height: 1.5rem;
+}
+
+ul.quick-links li a {
+    color: var(--quick-link-color);
+    text-decoration: none;
 }
 
 .no-display {
