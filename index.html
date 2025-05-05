@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="et-EE">
+<html lang="et-EE"
+      data-color-scheme-mode="system"
+      data-active-color-scheme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -8,7 +10,6 @@
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="cyan"/>
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="yellow"/>
     <title>Demo</title>
-    <link rel="stylesheet" href="css/color-scheme-selector.css">
     <link rel="stylesheet" href="css/web.css">
 </head>
 <body>
@@ -219,6 +220,46 @@
 
 
 <script>
+    function enableColorSchemeMode(mode) {
+        const activeColorScheme = resolveToColorScheme(mode);
+
+        setColorSchemeMode(mode);
+        setActiveColorScheme(activeColorScheme);
+        saveColorSchemeMode(mode);
+    }
+
+    function resolveToColorScheme(mode) {
+        if (mode === "system") {
+            return querySystemColorScheme()
+        } else {
+            return mode;
+        }
+    }
+
+    function querySystemColorScheme() {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return "dark"
+        }
+        return "light"
+    }
+
+    function listenForSystemColorSchemeChange() {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            let mode = fetchColorSchemeMode();
+            if (mode === "system") {
+                enableColorSchemeMode("system")
+            }
+        });
+    }
+
+    function setColorSchemeMode(mode) {
+        document.documentElement.dataset.colorSchemeMode = mode;
+    }
+
+    function setActiveColorScheme(colorScheme) {
+        document.documentElement.dataset.activeColorScheme = colorScheme;
+    }
+
     function saveColorSchemeMode(mode) {
         sessionStorage.setItem("color-scheme-mode", mode);
     }
@@ -227,7 +268,7 @@
         return sessionStorage.getItem("color-scheme-mode");
     }
 
-    function selectColorSchemeRadioInput(colorSchemeMode) {
+    function setColorSchemeRadioInputChecked(colorSchemeMode) {
         if (colorSchemeMode) {
             let selectedInput;
             switch (colorSchemeMode) {
@@ -253,15 +294,15 @@
         <div id="color-scheme-switcher" style="user-select: none">
             Theme:
             <input type="radio" id="color-scheme-selected-system" name="selected-color-scheme" value="system"
-                   onchange="saveColorSchemeMode(this.value)" checked/><label
+                   onchange="enableColorSchemeMode(this.value)" checked/><label
                 for="color-scheme-selected-system">Automatic</label>
 
             <input type="radio" id="color-scheme-selected-light" name="selected-color-scheme" value="light"
-                   onchange="saveColorSchemeMode(this.value)"/><label
+                   onchange="enableColorSchemeMode(this.value)"/><label
                 for="color-scheme-selected-light">Light</label>
 
             <input type="radio" id="color-scheme-selected-dark" name="selected-color-scheme" value="dark"
-                   onchange="saveColorSchemeMode(this.value)"/><label
+                   onchange="enableColorSchemeMode(this.value)"/><label
                 for="color-scheme-selected-dark">Dark</label>
         </div>
     </section>
@@ -269,7 +310,14 @@
 
 <script>
     const colorSchemeMode = fetchColorSchemeMode()
-    selectColorSchemeRadioInput(colorSchemeMode);
+    if (colorSchemeMode) {
+        enableColorSchemeMode(colorSchemeMode);
+        setColorSchemeRadioInputChecked(colorSchemeMode);
+    } else {
+        enableColorSchemeMode("system");
+        setColorSchemeRadioInputChecked("system");
+    }
+    listenForSystemColorSchemeChange();
 </script>
 
 </body>

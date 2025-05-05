@@ -4,10 +4,18 @@
     --font-monospace: ui-monospace, monospace;
 }
 
-:root {
-    --color-background: light-dark(#FFF, #1F1F1F);
-    --color-text: light-dark(#1F1F1F, #E8F2F7);
-    --color-bottom-dialog-background: light-dark(#F2F2F2, #242424);
+:root[data-active-color-scheme="light"] {
+    color-scheme: light;
+    --color-background: #FFF;
+    --color-text: #1F1F1F;
+    --color-bottom-dialog-background: #F2F2F2;
+}
+
+:root[data-active-color-scheme="dark"] {
+    color-scheme: dark;
+    --color-background: #1F1F1F;
+    --color-text: #E8F2F7;
+    --color-bottom-dialog-background: #242424;
 }
 
 html {
