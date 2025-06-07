@@ -50,13 +50,13 @@ body {
 
     background-color: var(--color-background);
     color: var(--color-text);
-    overflow: hidden;
+    xoverflow: hidden;
 
-    display: flex;
-    flex-direction: column;
-    scroll-behavior: smooth;
+    xdisplay: flex;
+    xflex-direction: column;
+    xscroll-behavior: smooth;
 
-    overscroll-behavior: none;
+    xoverscroll-behavior: none;
 
     /* better in macOS for light text on dark bg*/
     -webkit-font-smoothing: antialiased;
@@ -110,9 +110,14 @@ header.play-title p {
 
 main {
     xmargin-top: 50px;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    padding: 10px 16px 10px 16px;
+    xoverflow-y: auto;
+    xoverscroll-behavior: contain;
+    xpadding: 10px 16px 10px 16px;
+    padding: 10px 0 10px 0;
+}
+
+main article {
+    padding: 0 16px;
 }
 
 form {
@@ -200,16 +205,22 @@ ul.quick-links {
     display: flex;
     flex-wrap: nowrap;
     gap: 1rem;
-    overflow: auto;
-    padding: 0.5rem 0;
+    overflow-x: auto;
+    padding: 0.5rem 16px;
+
     list-style: none;
     border-bottom: 0.0625rem solid #d9d9d9;
     white-space: nowrap;
     scrollbar-width: thin;
+
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
 }
 
 ul.quick-links li {
     line-height: 1.5rem;
+    scroll-margin-left: 1rem;
 }
 
 ul.quick-links li a {
@@ -261,3 +272,8 @@ ul.quick-links li a {
     max-width: 100%;
 }
 
+a {
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, .0625rem);
+    text-underline-offset: .1578em;
+}
