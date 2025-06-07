@@ -64,19 +64,6 @@ body {
 }
 
 
-#site-header {
-    display: flex;
-    flex-flow: row wrap;
-
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0 1rem;
-    border-bottom: 1px solid #ccc;
-    background-color: rgba(0, 0, 0, 0.1);
-
-    flex: 0 0 60px;
-    align-items: center;
-}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading), sans-serif;
@@ -126,6 +113,19 @@ form {
     padding: 0;
 }
 
+#site-header {
+    display: flex;
+    flex-flow: row wrap;
+
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    border-bottom: 1px solid #ccc;
+    background-color: rgb(31, 31, 31);
+
+    flex: 0 0 60px;
+    align-items: center;
+}
 
 #site-header .top-navigation {
     flex-basis: 0;
@@ -145,6 +145,14 @@ form {
     flex-grow: 1;
     justify-content: flex-start;
     display: flex;
+}
+
+#site-header p.logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    color: #fbffbc;
 }
 
 input.top-search {
