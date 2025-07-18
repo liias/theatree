@@ -95,11 +95,7 @@ header.play-title p {
 }
 
 main {
-  xmargin-top: 50px;
-  xoverflow-y: auto;
-  xoverscroll-behavior: contain;
-  xpadding: 10px 16px 10px 16px;
-  padding: 10px 0 10px 0;
+  padding: 80px 0 10px 0;
 }
 
 main article {
@@ -112,19 +108,43 @@ form {
   padding: 0;
 }
 
+@keyframes add-box-shadow {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14),
+    0 1px 10px 0 rgba(0, 0, 0, .12),
+    0 2px 4px -1px rgba(0, 0, 0, .2);
+  }
+}
+
 #site-header {
+  position: fixed;
+  top: 0;
+
   display: flex;
   flex-flow: row wrap;
 
   justify-content: space-between;
   box-sizing: border-box;
   padding: 0 1rem;
-  border-bottom: 1px solid #ccc;
   background-color: #660033;
 
   flex: 0 0 60px;
   align-items: center;
   height: 4em;
+
+  color: #fff;
+
+  transition: box-shadow .2s ease-in-out;
+  width: 100%;
+  z-index: 3;
+
+  animation: add-box-shadow linear;
+  animation-timeline: scroll(root);
+  animation-range: 0 10px;
+  animation-fill-mode: forwards;
 }
 
 #site-header .top-navigation {
