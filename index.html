@@ -254,7 +254,7 @@
   }
 
   function listenForSystemColorSchemeChange() {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       let mode = fetchColorSchemeMode();
       if (mode === "system") {
         enableColorSchemeMode("system")
