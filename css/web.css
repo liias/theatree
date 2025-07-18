@@ -160,6 +160,7 @@ form {
 
 #site-header p.logo .dot {
   color: #db7093;
+  font-size: 0.6em;
 }
 
 input.top-search {
