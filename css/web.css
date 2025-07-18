@@ -124,6 +124,7 @@ form {
 
   flex: 0 0 60px;
   align-items: center;
+  height: 4em;
 }
 
 #site-header .top-navigation {
@@ -147,7 +148,7 @@ form {
 }
 
 #site-header p.logo {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
   margin: 0;
   padding: 0;
@@ -155,6 +156,10 @@ form {
   background-image: linear-gradient(45deg, #F9EFCB, #D4AF37);
   background-clip: text;
   color: transparent;
+}
+
+#site-header p.logo .dot {
+  color: #db7093;
 }
 
 input.top-search {
