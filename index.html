@@ -11,6 +11,7 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="yellow"/>
   <title>Hea põhjatuule vastu | Theatree</title>
   <link rel="stylesheet" href="css/web.css">
+  <script src="js/script.js"></script>
 </head>
 <body>
 <a id="top"></a>
@@ -229,76 +230,6 @@
 </footer>
 
 
-<script>
-  function enableColorSchemeMode(mode) {
-    const activeColorScheme = resolveToColorScheme(mode);
-
-    setColorSchemeMode(mode);
-    setActiveColorScheme(activeColorScheme);
-    saveColorSchemeMode(mode);
-  }
-
-  function resolveToColorScheme(mode) {
-    if (mode === "system") {
-      return querySystemColorScheme()
-    } else {
-      return mode;
-    }
-  }
-
-  function querySystemColorScheme() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return "dark"
-    }
-    return "light"
-  }
-
-  function listenForSystemColorSchemeChange() {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      let mode = fetchColorSchemeMode();
-      if (mode === "system") {
-        enableColorSchemeMode("system")
-      }
-    });
-  }
-
-  function setColorSchemeMode(mode) {
-    document.documentElement.dataset.colorSchemeMode = mode;
-  }
-
-  function setActiveColorScheme(colorScheme) {
-    document.documentElement.dataset.activeColorScheme = colorScheme;
-  }
-
-  function saveColorSchemeMode(mode) {
-    sessionStorage.setItem("color-scheme-mode", mode);
-  }
-
-  function fetchColorSchemeMode() {
-    return sessionStorage.getItem("color-scheme-mode");
-  }
-
-  function setColorSchemeRadioInputChecked(colorSchemeMode) {
-    if (colorSchemeMode) {
-      let selectedInput;
-      switch (colorSchemeMode) {
-        case "light":
-          selectedInput = document.getElementById("color-scheme-selected-light");
-          break;
-        case "dark":
-          selectedInput = document.getElementById("color-scheme-selected-dark");
-          break;
-        case "system":
-          selectedInput = document.getElementById("color-scheme-selected-system");
-          break;
-        default:
-          selectedInput = document.getElementById("color-scheme-selected-system");
-      }
-      selectedInput.checked = true;
-    }
-  }
-</script>
-
 <div class="bottom-modal">
   <section aria-label="Color scheme switcher">
     <div id="color-scheme-switcher" style="user-select: none">
@@ -317,29 +248,6 @@
     </div>
   </section>
 </div>
-
-<script>
-  const colorSchemeMode = fetchColorSchemeMode()
-  if (colorSchemeMode) {
-    enableColorSchemeMode(colorSchemeMode);
-    setColorSchemeRadioInputChecked(colorSchemeMode);
-  } else {
-    enableColorSchemeMode("system");
-    setColorSchemeRadioInputChecked("system");
-  }
-  listenForSystemColorSchemeChange();
-
-
-  let initialQuickLink = document.getElementById("initial-quick-link");
-  initialQuickLink.scrollIntoView({
-    behavior: "instant",
-    inline: "start"
-  });
-
-  //element.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
-
-
-</script>
 
 </body>
 </html>
