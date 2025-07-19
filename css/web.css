@@ -291,6 +291,10 @@ ul.quick-links li a {
   color: #999;
 }
 
+.info-tags span {
+  white-space: nowrap;
+}
+
 .info-tags span + span {
   padding-left: .5rem;
   margin-left: .25rem;
