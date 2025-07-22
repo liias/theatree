@@ -168,7 +168,7 @@ form {
   display: flex;
 }
 
-#site-header p.logo {
+#site-header .logo {
   font-family: "Marcellus SC", serif;
   font-weight: 400;
   font-style: normal;
@@ -180,11 +180,6 @@ form {
   background-image: linear-gradient(45deg, #F9EFCB, #D4AF37);
   background-clip: text;
   color: transparent;
-}
-
-#site-header p.logo .dot {
-  color: #db7093;
-  font-size: 0.6em;
 }
 
 input.top-search {
