@@ -276,7 +276,6 @@ ul.quick-links li a {
   bottom: 0;
   left: 0;
   width: 100%;
-  box-sizing: border-box;
   border-radius: 12px 12px 0 0;
   padding: 10px;
   background-color: var(--color-bottom-dialog-background);
