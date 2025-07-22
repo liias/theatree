@@ -182,9 +182,12 @@ form {
   color: transparent;
 
   user-select: none;
+  -webkit-user-select: none;
 }
 
 .search-icon {
+  user-select: none;
+  -webkit-user-select: none;
   cursor: pointer;
 }
 
